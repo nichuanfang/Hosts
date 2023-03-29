@@ -9,7 +9,6 @@
 
 ![image](https://user-images.githubusercontent.com/38210128/165656916-1866dd64-a836-48f1-a95a-80dd9f49cb25.png)
 
-
 ## 项目介绍
 
 1. 目标：
@@ -19,9 +18,19 @@
 
 ## 脚本介绍
 
-### python依赖
+> python依赖导出
 
-python引入rich库，使用脚本前需 pip install -r requirements；
+python引入各种依赖库，使用脚本前需:
+
+- 安装requirements导出器: `pip install pipreqs`
+- 导出当前项目的requirements.txt: `pipreqs ./ --encoding=utf8`
+
+不推荐使用pip freeze 因为这个命令会生成所有依赖项 包括项目之外的 不利于CICD
+
+> python依赖安装
+
+- 本地调试: `pip install -r ./requirements.txt`
+- workflow: `pip install -i <https://pypi.tuna.tsinghua.edu.cn/simple> -r ./workingDir/requirements.txt`
 
 ### 命令介绍
 
@@ -47,17 +56,18 @@ cd 至 workingDir 文件夹后 执行以下操作；
 
 ### hosts本仓库在线同步地址
 
-1. Github   https://github.com/JohyC/Hosts/blob/main/hosts.txt
+1. Github   <https://github.com/JohyC/Hosts/blob/main/hosts.txt>
 
-2. Gitee    https://gitee.com/yuchi-shentang/GithubHosts/blob/main/hosts.txt
+2. Gitee    <https://gitee.com/yuchi-shentang/GithubHosts/blob/main/hosts.txt>
 
-3. Gitea    https://www.foul.trade:3000/Johy/Hosts/raw/branch/main/hosts.txt
+3. Gitea    <https://www.foul.trade:3000/Johy/Hosts/raw/branch/main/hosts.txt>
 
 4. ~~服务器~~  由于安全问题，不再提供服务链接，请使用gitea链接同步；
-   
+
 ### 仓库同步地址
-1. gitea https://www.foul.trade:3000/Johy/Hosts
-2. gitee https://gitee.com/yuchi-shentang/GithubHosts
+
+1. gitea <https://www.foul.trade:3000/Johy/Hosts>
+2. gitee <https://gitee.com/yuchi-shentang/GithubHosts>
 
 ## 使用方式
 
@@ -71,11 +81,10 @@ cd 至 workingDir 文件夹后 执行以下操作；
 2. 规则配置：
    - 方案名：Johy/hosts (自行命名)
    - 类型：远程
-   - URL 地址：https://www.foul.trade:3000/Johy/Hosts/raw/branch/main/hosts.txt (url: 推荐地址，国内同步更稳定)
+   - URL 地址：<https://www.foul.trade:3000/Johy/Hosts/raw/branch/main/hosts.txt> (url: 推荐地址，国内同步更稳定)
    - 自动更新：24小时 （hosts地址变更不会特别频繁）
 
 ![image](https://user-images.githubusercontent.com/38210128/127502984-7ef25b7c-1901-4164-ab29-e5dbc487e63d.png)
-
 
 ### 手动配置hosts
 
@@ -85,11 +94,11 @@ cd 至 workingDir 文件夹后 执行以下操作；
 
 `macOS`系统下修改需要按照如下方式：
 
-1. ##### 打开（访达）Finder。
+1. ##### 打开（访达）Finder
 
-2. ##### 组合键`Shift+Command+G`打开"前往文件夹"。
+2. ##### 组合键`Shift+Command+G`打开"前往文件夹"
 
-3. ##### 输入框中输入`/etc/hosts`;跳转到`hosts`文件位置。
+3. ##### 输入框中输入`/etc/hosts`;跳转到`hosts`文件位置
 
 > 注意：`VS Code`可以直接修改和保存，不需要以下步骤。
 
@@ -121,4 +130,3 @@ ipconfig /flushdns
 - [x] GitHub Actions自动更新hosts内容；
 - [x] GitHub Actions自动更新本仓库代码至[Gitee](https://gitee.com/yuchi-shentang/GithubHosts)；(可从Gitee获取最新hosts文件)
 - [x] 自建git服务器，并同步仓库内容;(解决Gitee hosts.txt文件违规问题)
-
