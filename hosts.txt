@@ -2,9 +2,9 @@
 59.110.246.251                 segmentfault.com
 43.154.220.152                 bbs.tampermonkey.net.cn
 20.205.243.166                 github.com
-104.26.14.163                  alpha.wallhaven.cc
+104.26.15.163                  alpha.wallhaven.cc
 
-# Last update at 2023-03-29 21:45:26 (Beijing Time)
+# Last update at 2023-03-29 22:49:57 (Beijing Time)
 # Star me GitHub url: https://github.com/JohyC/Hosts
 # Hosts End 
 
