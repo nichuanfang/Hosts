@@ -6,15 +6,13 @@
 #   Date    :   2021-06-05
 #   Desc    :   parsing_hosts.py;从域名列解析出对应ip地址；
 
+from logging import log
 import socket
 import argparse
 import sys
 
 from datetime import datetime, timedelta, timezone
-from rich.console import Console
 from seo import seo_search
-
-console = Console()
 
 parser = argparse.ArgumentParser(description='Parse the github domain to get ip, or parse given domain.')
 parser.add_argument('-d','--domains',nargs='*',help = 'input domain to be parse')
@@ -50,8 +48,6 @@ def get_ip_list(domain): # 获取域名解析出的IP列表
 
 def gen_host():
     for domain in domains:
-        console.print('Querying ip for domain ',style="#66CCFF",end="")
-        console.print(domain,style="#ff6800")
         list = get_ip_list(domain.strip())
         for ip in list:
             yield (ip, domain)
@@ -67,11 +63,10 @@ def output_hosts():
     with open(name, 'w') as f:
         f.write('# Hosts Start \n')
         for ip, domain in gen_host():
-            console.print('ip %s'%ip)
             f.write('%s %s\n'%(ip.ljust(30), domain.strip()))
         f.write('\n# Last update at %s (Beijing Time)'%(get_time()))
         f.write('\n# Star me GitHub url: https://github.com/JohyC/Hosts')
         f.write('\n# Hosts End \n\n')
 if __name__ == '__main__':
-    
     output_hosts()
+    log('域名解析完成!')
