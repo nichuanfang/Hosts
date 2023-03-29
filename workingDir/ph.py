@@ -12,6 +12,7 @@ import sys
 
 from datetime import datetime, timedelta, timezone
 from rich.console import Console
+from seo import seo_search
 
 console = Console()
 
@@ -37,10 +38,11 @@ elif args.file:
 def get_ip_list(domain): # 获取域名解析出的IP列表
   ip_list = []
   try:
-    addrs = socket.getaddrinfo(domain, None)
-    for item in addrs:
-      if item[4][0] not in ip_list:
-        ip_list.append(item[4][0])
+    ip = seo_search.find_fastest_ip(domain)
+    if ip is None:
+       raise RuntimeError('域名解析失败')
+    if ip not in ip_list:
+       ip_list.append(ip)
   except Exception:
     ip_list.append('# No resolution for '+domain)
     pass
@@ -71,4 +73,5 @@ def output_hosts():
         f.write('\n# Star me GitHub url: https://github.com/JohyC/Hosts')
         f.write('\n# Hosts End \n\n')
 if __name__ == '__main__':
+    
     output_hosts()
