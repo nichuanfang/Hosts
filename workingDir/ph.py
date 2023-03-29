@@ -6,7 +6,7 @@
 #   Date    :   2021-06-05
 #   Desc    :   parsing_hosts.py;从域名列解析出对应ip地址；
 
-from logging import log
+import logging
 import socket
 import argparse
 import sys
@@ -14,11 +14,14 @@ import sys
 from datetime import datetime, timedelta, timezone
 from seo import seo_search
 
+logging.getLogger().setLevel(logging.INFO)
+
 parser = argparse.ArgumentParser(description='Parse the github domain to get ip, or parse given domain.')
 parser.add_argument('-d','--domains',nargs='*',help = 'input domain to be parse')
 parser.add_argument('-f','--file',nargs='*',type=argparse.FileType('r'),help='give me a file here!')
 parser.add_argument('-o','--output',nargs=1,type=str,help='output name')
 args = parser.parse_args()
+
 
 domains = []
 name = "hosts.txt"
@@ -48,6 +51,7 @@ def get_ip_list(domain): # 获取域名解析出的IP列表
 
 def gen_host():
     for domain in domains:
+        logging.info('======Querying ip for domain:'+domain)
         list = get_ip_list(domain.strip())
         for ip in list:
             yield (ip, domain)
@@ -69,4 +73,4 @@ def output_hosts():
         f.write('\n# Hosts End \n\n')
 if __name__ == '__main__':
     output_hosts()
-    log('域名解析完成!')
+    logging.info('=========域名解析完成!')
