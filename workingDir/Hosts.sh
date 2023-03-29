@@ -1,2 +1,2 @@
 #!/bin/bash!bash
-python ph.py -f GithubDomains DevelopDomains -o ../hosts.txt
+python ph.py -f DevelopDomains -o ../hosts.txt
